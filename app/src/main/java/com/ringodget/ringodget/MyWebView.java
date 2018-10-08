@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 public class MyWebView extends WebView {
     private Context mContext;
@@ -44,13 +43,13 @@ public class MyWebView extends WebView {
                 if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                     // 開始位置から終了位置の移動距離が指定値より大きい
                     // X軸の移動速度が指定値より大きい
-                    MoveRightToLeft();
-                    Toast.makeText(mContext, "右から左", Toast.LENGTH_SHORT).show();
+                    MoveLeftToRight();
+                    // Toast.makeText(mContext, "右から左", Toast.LENGTH_SHORT).show();
                 } else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                     // 終了位置から開始位置の移動距離が指定値より大きい
                     // X軸の移動速度が指定値より大きい
-                    MoveLeftToRight();
-                    Toast.makeText(mContext, "左から右", Toast.LENGTH_SHORT).show();
+                    MoveRightToLeft();
+                    // Toast.makeText(mContext, "左から右", Toast.LENGTH_SHORT).show();
                 }
             } catch (Exception e) {
                 // nothing
@@ -65,11 +64,11 @@ public class MyWebView extends WebView {
         return (mGestureDetector.onTouchEvent(event) | super.onTouchEvent(event));
     }
 
-    private void MoveLeftToRight() {//左から右へ
-        goForward();//進む
+    private void MoveLeftToRight() {    //左から右へ
+        goForward();    //進む
     }
 
-    private void MoveRightToLeft() {//右から左
-        goBack();//戻る
+    private void MoveRightToLeft() {    //右から左
+        goBack();    //戻る
     }
 }
